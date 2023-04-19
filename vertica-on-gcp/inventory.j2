@@ -1,0 +1,14 @@
+[vertica]
+%{ for index, dns in vertica-dns ~}
+${dns} ansible_host=${vertica-private[index]} cluster_ip=${vertica-private[index]}
+%{ endfor ~}
+
+
+
+
+[all:vars]
+vertica_communal_bucket=${vertica_communal_bucket}
+access_id=${access_id}
+secret_key=${secret_key}
+vertica_dbname= vertica
+vertica_shard=8
